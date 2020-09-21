@@ -4,16 +4,18 @@ import time
 pygame.init()
 
 size = width, height = 640, 480
+characterSize = [80,80]
 speed = [30, 30]
 white = 255, 255, 255
+blue = 0,0,120
 screen = pygame.display.set_mode(size)
 isJump = False
 jumpCount = 10
-vel = 20
+vel = 9
 
-dragon = pygame.image.load("./sprites/dragon.png")
-dragon = pygame.transform.scale(dragon, (40, 40))
-y = height - 40
+dragon = pygame.image.load("./sprites/skeleton.png")
+dragon = pygame.transform.scale(dragon, (characterSize[0], characterSize[1]))
+y = height - characterSize[1]
 x = 0
 while 1:
     pygame.time.delay(20)
@@ -26,7 +28,7 @@ while 1:
     if keys[pygame.K_LEFT] and x > vel: 
         x -= vel
 
-    if keys[pygame.K_RIGHT] and x < width - vel - 40:  
+    if keys[pygame.K_RIGHT] and x < width - vel - characterSize[0]:  
         x += vel
 
     if not(isJump):
@@ -40,6 +42,6 @@ while 1:
             jumpCount = 10
             isJump = False
 
-    screen.fill(white)
+    screen.fill(blue)
     screen.blit(dragon,(x,y))
     pygame.display.flip()
