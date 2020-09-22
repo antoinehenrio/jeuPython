@@ -14,8 +14,9 @@ jumpCount = 10
 vel = 9
 
 dragon = pygame.image.load("./sprites/skeleton.png")
+background = pygame.image.load("./sprites/background.png")
 dragon = pygame.transform.scale(dragon, (characterSize[0], characterSize[1]))
-y = height - characterSize[1]
+y = 401 - characterSize[1]
 x = 0
 while 1:
     pygame.time.delay(20)
@@ -42,6 +43,6 @@ while 1:
             jumpCount = 10
             isJump = False
 
-    screen.fill(blue)
+    screen.blit(background,[0,0])
     screen.blit(dragon,(x,y))
     pygame.display.flip()
